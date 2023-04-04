@@ -19,6 +19,8 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.66.0"
 
+  flow_log_cloudwatch_log_group_kms_key_id = aws_kms_key.eks_key.arn
+
   name                 = "csc-vpc"
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
